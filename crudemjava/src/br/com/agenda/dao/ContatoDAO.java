@@ -125,6 +125,33 @@ public class ContatoDAO {
 		}
 	}
 
+	public void deleteByID (int id) {
+		
+		String sql = "DELETE FROM contatos WHERE id = ?";
+		Connection conn = null;
+		JdbcPreparedStatement pstm = null;
+		
+		try {
+			conn = ConnectionFactory.createConnectionToMySQL(); //cria a conexão
+			pstm = (JdbcPreparedStatement)conn.prepareStatement(sql); //instancia um objeto da classe statement
+			pstm.setInt(1, id);
+			pstm.execute();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstm!=null) {
+					pstm.close();
+				}
+				if (conn!=null) {
+					conn.close();
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
 
 	

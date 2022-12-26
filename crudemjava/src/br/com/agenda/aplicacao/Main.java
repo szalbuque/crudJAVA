@@ -21,17 +21,26 @@ public class Main {
 		//contatoDAO.save(contato);
 		
 		// UPDATE
+		//ContatoDAO contatoDAO = new ContatoDAO();
+		//Contato contato = new Contato();
+		//contato.setNome("Silvia Rocha");
+		//contato.setIdade(55);
+		//contato.setDataCadastro(new Date());
+		//contato.setId(1); // ID do registro que quero atualizar
+		//contatoDAO.update(contato);
 		ContatoDAO contatoDAO = new ContatoDAO();
-		Contato contato = new Contato();
-		contato.setNome("Silvia Rocha");
-		contato.setIdade(55);
-		contato.setDataCadastro(new Date());
-		contato.setId(1); // ID do registro que quero atualizar
-		contatoDAO.update(contato);
 		
 		// Lista todos os contatos READ
 		for (Contato c: contatoDAO.getContatos()) {
-			System.out.println("Contato:"+c.getNome());
+			System.out.println("ID:"+c.getId()+"Contato:"+c.getNome());
+		}
+		
+		// Remove um registro pelo ID
+		contatoDAO.deleteByID(2);
+		
+		// Lista todos os contatos READ
+		for (Contato c: contatoDAO.getContatos()) {
+			System.out.println("ID:"+c.getId()+"Contato:"+c.getNome());
 		}
 	}
 
